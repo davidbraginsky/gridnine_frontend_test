@@ -8,7 +8,7 @@ const FlightSegment = () => {
             <span className="flight__departure-airportID">(SVO)</span>
           </div>
           <div className="arrow">
-            <i class="fa-solid fa-arrow-right-long"></i>
+            <i className="fa-solid fa-arrow-right-long"></i>
           </div>
           <div className="flight__arrival">
             <span className="flight__arrival-airport">ЛОНДОН, Лондон, Хитроу</span>
