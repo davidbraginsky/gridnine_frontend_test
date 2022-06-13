@@ -1,0 +1,25 @@
+.container {
+  width: 80%;
+  max-width: 964px;
+  margin: 0 auto;
+}
+
+.flights-table {
+  display: flex;
+}
+
+.flights-box {
+  width: 100%;
+}
+
+.grey-divider {
+  height: 1px;
+  width: 100%;
+  background-color: $grey;
+}
+
+.blue-divider {
+  height: 2px;
+  width: 100%;
+  background-color: $blue;
+}

@@ -1,0 +1,46 @@
+.flight__header {
+  display: flex;
+  justify-content: space-between;
+  background-color: $blue;
+  width: 100%;
+  align-items: center;
+}
+
+.flight__logo img {
+  height: 40px;
+}
+
+.flight__info-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flight__length {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flight__segments {
+  text-align: center;
+  position: relative;
+}
+
+.flight__stops::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  background-color: red;
+  position: absolute;
+  top: 9px;
+  right: 10px;
+}
+
+.flight__stops::before {
+  content: "";
+  width: 120px;
+  height: 1px;
+  background-color: red;
+  position: absolute;
+  top: 9px;
+  left: 10px;
+}
