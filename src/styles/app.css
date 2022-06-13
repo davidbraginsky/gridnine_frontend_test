@@ -13,7 +13,7 @@ body {
 
 .container {
   width: 80%;
-  max-width: 964px;
+  max-width: 920px;
   margin: 0 auto;
 }
 
@@ -29,12 +29,14 @@ body {
   height: 1px;
   width: 100%;
   background-color: #d9d9d9;
+  margin-bottom: 12px;
 }
 
 .blue-divider {
   height: 2px;
   width: 100%;
   background-color: #0087c9;
+  margin-bottom: 12px;
 }
 
 .flight__header {
@@ -43,6 +45,10 @@ body {
   background-color: #0087c9;
   width: 100%;
   align-items: center;
+  padding-left: 12px;
+  padding-right: 16px;
+  margin-bottom: 12px;
+  color: white;
 }
 
 .flight__logo img {
@@ -51,37 +57,115 @@ body {
 
 .flight__info-section {
   display: flex;
-  justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .flight__length {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.flights-box {
+  margin-top: 20px;
+}
+
+.flight__price {
+  text-align: right;
+}
+
+.flight__price-text {
+  font-size: 11px;
+}
+
+.flight__price-sum {
+  font-size: 22px;
+}
+
+.flight__departure {
+  margin-left: 18px;
+  font-size: 17px;
+}
+
+.flight__departure-airportID {
+  color: #0087c9;
+  margin-left: 4px;
+  margin-right: 6px;
+}
+
+.flight__arrival-airportID {
+  color: #0087c9;
+  margin-left: 6px;
+}
+
+.arrow {
+  color: #0087c9;
+  margin-right: 8px;
+}
+
+.flight__length-block {
+  display: flex;
+  align-items: baseline;
+}
+
+.flight__info-section-duration {
+  max-width: 580px;
+  margin-left: 18px;
+}
+
+.flight__departure-time,
+.flight__arrival-time {
+  font-size: 20px;
+}
+
+.flight__departure-time {
+  margin-right: 4px;
+}
+
+.flight__arrival-time {
+  margin-left: 4px;
+}
+
+.flight__departure-date,
+.flight__arrival-date {
+  color: #0087c9;
+  font-weight: 300;
+}
+
+.flight__total-flight-time img {
+  margin-right: 4px;
+  height: 14px;
+}
+
+.flight__stops {
+  color: #ff9a43;
+  font-weight: 300;
+  margin: 0px 4px;
 }
 
 .flight__segments {
-  text-align: center;
-  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
-.flight__stops::after {
-  content: "";
-  width: 120px;
+.flight__segment-divider {
   height: 1px;
-  background-color: red;
-  position: absolute;
-  top: 9px;
-  right: 10px;
+  width: 220px;
+  background-color: #b4b4b4;
 }
 
-.flight__stops::before {
-  content: "";
-  width: 120px;
-  height: 1px;
-  background-color: red;
-  position: absolute;
-  top: 9px;
-  left: 10px;
+.flight__segment-divider:first-of-type {
+  margin-left: 34px;
+}
+
+.flight__company {
+  margin-bottom: 8px;
+}
+
+.flight__combo {
+  margin-bottom: 30px;
 }
 
 .btn {
@@ -89,6 +173,10 @@ body {
   background-color: #ffb168;
   border: none;
   cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+  padding: 11px 0px;
+  font-size: 16px;
 }
 
 .sort__header {

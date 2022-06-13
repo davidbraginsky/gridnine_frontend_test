@@ -64,15 +64,24 @@ function App() {
                   <div className="flight__logo">
                     <img src="https://pics.avs.io/200/200/LO.png" alt="airline carrier logo" />
                   </div>
-                  <div className="flight__price">21049 &#8381;</div>
+                  <div className="flight__price">
+                    <div className="flight__price-sum">21049 &#8381;</div>
+                    <div className="flight__price-text">Стоимость для одного взрослого пассажира</div>
+                  </div>
                 </div>
                 <div className="flight__info">
                   <div className="flight__info-section">
-                    <div className="flight__departure">Москва, Шереметьево (SVO)</div>
+                    <div className="flight__departure">
+                      <span className="flight__departure-airport">Москва, ШЕРЕМЕТЬЕВО</span>
+                      <span className="flight__departure-airportID">(SVO)</span>
+                    </div>
                     <div className="arrow">
                       <i class="fa-solid fa-arrow-right-long"></i>
                     </div>
-                    <div className="flight__arrival">Лондон, Лондон, Хитроу (LHR)</div>
+                    <div className="flight__arrival">
+                      <span className="flight__arrival-airport">ЛОНДОН, Лондон, Хитроу</span>
+                      <span className="flight__arrival-airportID">(LHR)</span>
+                    </div>
                   </div>
                   <div className="grey-divider"></div>
                   <div className="flight__info-section-duration">
@@ -83,7 +92,7 @@ function App() {
                       </div>
                       <div className="flight__length-block">
                         <div className="flight__total-flight-time">
-                          <i class="fa-solid fa-clock"></i>
+                          <img src="icons/wall-clock.png" alt="icon of a clock" />
                           14 ч 45 мин
                         </div>
                       </div>
@@ -93,7 +102,9 @@ function App() {
                       </div>
                     </div>
                     <div className="flight__segments">
+                      <div className="flight__segment-divider"></div>
                       <span className="flight__stops">1 пересадка</span>
+                      <div className="flight__segment-divider"></div>
                     </div>
                     <div className="flight__company">Рейс выполняет: LOT Polish Airlines</div>
                   </div>
@@ -101,19 +112,19 @@ function App() {
               </div>
               <div className="blue-divider"></div>
               <div className="flight">
-                <div className="flight__header">
-                  <div className="flight__logo">
-                    <img src="https://pics.avs.io/200/200/LO.png" alt="airline carrier logo" />
-                  </div>
-                  <div className="flight__price">21049 &#8381;</div>
-                </div>
                 <div className="flight__info">
                   <div className="flight__info-section">
-                    <div className="flight__departure">Москва, Шереметьево (SVO)</div>
+                    <div className="flight__departure">
+                      <span className="flight__departure-airport">Москва, ШЕРЕМЕТЬЕВО</span>
+                      <span className="flight__departure-airportID">(SVO)</span>
+                    </div>
                     <div className="arrow">
                       <i class="fa-solid fa-arrow-right-long"></i>
                     </div>
-                    <div className="flight__arrival">Лондон, Лондон, Хитроу (LHR)</div>
+                    <div className="flight__arrival">
+                      <span className="flight__arrival-airport">ЛОНДОН, Лондон, Хитроу</span>
+                      <span className="flight__arrival-airportID">(LHR)</span>
+                    </div>
                   </div>
                   <div className="grey-divider"></div>
                   <div className="flight__info-section-duration">
@@ -124,7 +135,7 @@ function App() {
                       </div>
                       <div className="flight__length-block">
                         <div className="flight__total-flight-time">
-                          <i class="fa-solid fa-clock"></i>
+                          <img src="icons/wall-clock.png" alt="icon of a clock" />
                           14 ч 45 мин
                         </div>
                       </div>
@@ -134,7 +145,9 @@ function App() {
                       </div>
                     </div>
                     <div className="flight__segments">
+                      <div className="flight__segment-divider"></div>
                       <span className="flight__stops">1 пересадка</span>
+                      <div className="flight__segment-divider"></div>
                     </div>
                     <div className="flight__company">Рейс выполняет: LOT Polish Airlines</div>
                   </div>
@@ -148,15 +161,24 @@ function App() {
                   <div className="flight__logo">
                     <img src="https://pics.avs.io/200/200/LO.png" alt="airline carrier logo" />
                   </div>
-                  <div className="flight__price">21049 &#8381;</div>
+                  <div className="flight__price">
+                    <div className="flight__price-sum">21049 &#8381;</div>
+                    <div className="flight__price-text">Стоимость для одного взрослого пассажира</div>
+                  </div>
                 </div>
                 <div className="flight__info">
                   <div className="flight__info-section">
-                    <div className="flight__departure">Москва, Шереметьево (SVO)</div>
+                    <div className="flight__departure">
+                      <span className="flight__departure-airport">Москва, ШЕРЕМЕТЬЕВО</span>
+                      <span className="flight__departure-airportID">(SVO)</span>
+                    </div>
                     <div className="arrow">
                       <i class="fa-solid fa-arrow-right-long"></i>
                     </div>
-                    <div className="flight__arrival">Лондон, Лондон, Хитроу (LHR)</div>
+                    <div className="flight__arrival">
+                      <span className="flight__arrival-airport">ЛОНДОН, Лондон, Хитроу</span>
+                      <span className="flight__arrival-airportID">(LHR)</span>
+                    </div>
                   </div>
                   <div className="grey-divider"></div>
                   <div className="flight__info-section-duration">
@@ -167,7 +189,7 @@ function App() {
                       </div>
                       <div className="flight__length-block">
                         <div className="flight__total-flight-time">
-                          <i class="fa-solid fa-clock"></i>
+                          <img src="icons/wall-clock.png" alt="icon of a clock" />
                           14 ч 45 мин
                         </div>
                       </div>
@@ -177,7 +199,9 @@ function App() {
                       </div>
                     </div>
                     <div className="flight__segments">
+                      <div className="flight__segment-divider"></div>
                       <span className="flight__stops">1 пересадка</span>
+                      <div className="flight__segment-divider"></div>
                     </div>
                     <div className="flight__company">Рейс выполняет: LOT Polish Airlines</div>
                   </div>
@@ -185,19 +209,19 @@ function App() {
               </div>
               <div className="blue-divider"></div>
               <div className="flight">
-                <div className="flight__header">
-                  <div className="flight__logo">
-                    <img src="https://pics.avs.io/200/200/LO.png" alt="airline carrier logo" />
-                  </div>
-                  <div className="flight__price">21049 &#8381;</div>
-                </div>
                 <div className="flight__info">
                   <div className="flight__info-section">
-                    <div className="flight__departure">Москва, Шереметьево (SVO)</div>
+                    <div className="flight__departure">
+                      <span className="flight__departure-airport">Москва, ШЕРЕМЕТЬЕВО</span>
+                      <span className="flight__departure-airportID">(SVO)</span>
+                    </div>
                     <div className="arrow">
                       <i class="fa-solid fa-arrow-right-long"></i>
                     </div>
-                    <div className="flight__arrival">Лондон, Лондон, Хитроу (LHR)</div>
+                    <div className="flight__arrival">
+                      <span className="flight__arrival-airport">ЛОНДОН, Лондон, Хитроу</span>
+                      <span className="flight__arrival-airportID">(LHR)</span>
+                    </div>
                   </div>
                   <div className="grey-divider"></div>
                   <div className="flight__info-section-duration">
@@ -208,7 +232,7 @@ function App() {
                       </div>
                       <div className="flight__length-block">
                         <div className="flight__total-flight-time">
-                          <i class="fa-solid fa-clock"></i>
+                          <img src="icons/wall-clock.png" alt="icon of a clock" />
                           14 ч 45 мин
                         </div>
                       </div>
@@ -218,7 +242,9 @@ function App() {
                       </div>
                     </div>
                     <div className="flight__segments">
+                      <div className="flight__segment-divider"></div>
                       <span className="flight__stops">1 пересадка</span>
+                      <div className="flight__segment-divider"></div>
                     </div>
                     <div className="flight__company">Рейс выполняет: LOT Polish Airlines</div>
                   </div>
