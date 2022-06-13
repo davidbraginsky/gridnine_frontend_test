@@ -1,0 +1,127 @@
+.flight__header {
+  display: flex;
+  justify-content: space-between;
+  background-color: $blue;
+  width: 100%;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 16px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+.flight__logo img {
+  height: 40px;
+}
+
+.flight__info-section {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.flight__length {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.flights-box {
+  margin-top: 20px;
+}
+
+.flight__price {
+  text-align: right;
+}
+
+.flight__price-text {
+  font-size: 11px;
+}
+.flight__price-sum {
+  font-size: 22px;
+}
+
+.flight__departure {
+  margin-left: 18px;
+  font-size: 17px;
+}
+
+.flight__departure-airportID {
+  color: $blue;
+  margin-left: 4px;
+  margin-right: 6px;
+}
+
+.flight__arrival-airportID {
+  color: $blue;
+  margin-left: 6px;
+}
+
+.arrow {
+  color: $blue;
+  margin-right: 8px;
+}
+
+.flight__length-block {
+  display: flex;
+  align-items: baseline;
+}
+
+.flight__info-section-duration {
+  max-width: 580px;
+  margin-left: 18px;
+}
+
+.flight__departure-time,
+.flight__arrival-time {
+  font-size: 20px;
+}
+
+.flight__departure-time {
+  margin-right: 4px;
+}
+
+.flight__arrival-time {
+  margin-left: 4px;
+}
+
+.flight__departure-date,
+.flight__arrival-date {
+  color: $blue;
+  font-weight: 300;
+}
+
+.flight__total-flight-time img {
+  margin-right: 4px;
+  height: 14px;
+}
+
+.flight__stops {
+  color: $light-orange;
+  font-weight: 300;
+  margin: 0px 4px;
+}
+
+.flight__segments {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.flight__segment-divider {
+  height: 1px;
+  width: 220px;
+  background-color: $dark-grey;
+}
+
+.flight__segment-divider:first-of-type {
+  margin-left: 34px;
+}
+
+.flight__company {
+  margin-bottom: 8px;
+}
+
+.flight__combo {
+  margin-bottom: 30px;
+}

@@ -1,0 +1,81 @@
+.sort__header {
+  font-weight: 500;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.sort-box {
+  margin-bottom: 36px;
+}
+.filter-box {
+  margin-bottom: 18px;
+}
+
+.price-box {
+  margin-bottom: 18px;
+}
+
+.sort-filter-box {
+  min-width: 255px;
+  margin-right: 24px;
+}
+
+.sort-box input,
+.filter-box input,
+.airlines-box input {
+  margin-right: 4px;
+}
+
+.sort-box label,
+.filter-box label,
+.price__option label {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.airline__option label {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.price-box label {
+  margin-right: 4px;
+}
+
+.price__option {
+  margin-bottom: 16px;
+}
+
+.sort__option input,
+.filter__option input,
+.airline__option input {
+  cursor: pointer;
+}
+
+.price__option input {
+  width: 173px;
+}
+
+.sort-filter-box__top {
+  height: 36px;
+  background-color: $grey;
+  margin-bottom: 34px;
+}
+
+.sort-filter-box__bottom {
+  height: 145px;
+  background-color: $grey;
+  margin-top: 36px;
+}
+
+.boxes-container {
+  padding: 0px 22px;
+}
+
+.filter-box .sort__header {
+  margin-bottom: 16px;
+}
+
+.airlines-box .sort__header {
+  margin-bottom: 18px;
+}
