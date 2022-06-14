@@ -5,7 +5,7 @@ import FilterContext from "../context/FilterContext";
 const FlightTable = () => {
   const [data, setData] = useState(null);
   const [visible, setVisible] = useState(3);
-  const { sortParameter } = useContext(FilterContext);
+  const { sortParameter, filterParameters } = useContext(FilterContext);
 
   const getData = async () => {
     const response = await fetch("http://localhost:3000/result");
@@ -37,6 +37,27 @@ const FlightTable = () => {
       }
     }
   }, [sortParameter]);
+
+  useEffect(() => {
+    if (filterParameters.length > 0) {
+      console.log(filterParameters);
+
+      if (filterParameters.includes("1-stop") && filterParameters.includes("no-stops")) {
+        console.log("inside here");
+        getData();
+      } else if (filterParameters.includes("no-stops")) {
+        const filteredData = [...data];
+        const noStopsData = filteredData.filter((item) => item.flight.legs[1].segments.length === 1 && item.flight.legs[0].segments.length === 1);
+        setData(noStopsData);
+      } else if (filterParameters.includes("1-stop")) {
+        const filteredData = [...data];
+        const oneStopData = filteredData.filter((item) => item.flight.legs[1].segments.length > 1 || item.flight.legs[0].segments.length > 1);
+        setData(oneStopData);
+      }
+    } else {
+      getData();
+    }
+  }, [filterParameters]);
 
   const clickHandler = () => {
     setVisible((prevValue) => prevValue + 3);
