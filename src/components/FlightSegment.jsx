@@ -159,7 +159,7 @@ const FlightSegment = ({ leg, carrier }) => {
             </div>
             <div className="flight__segments">
               <div className="flight__segment-divider"></div>
-              <span className="flight__stops">1 пересадка</span>
+              <span className="flight__stops">без пересадок</span>
               <div className="flight__segment-divider"></div>
             </div>
             <div className="flight__company">
