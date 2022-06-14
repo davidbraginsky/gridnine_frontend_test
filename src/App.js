@@ -1,15 +1,15 @@
 import SortSidebar from "./components/SortSidebar";
 import FlightTable from "./components/FlightTable";
-import { FlightProvider } from "./context/FlightContext";
+import { FilterProvider } from "./context/FilterContext";
 
 function App() {
   return (
     <div className="container">
       <div className="flights-table">
-        <FlightProvider>
+        <FilterProvider>
           <SortSidebar />
           <FlightTable />
-        </FlightProvider>
+        </FilterProvider>
       </div>
     </div>
   );

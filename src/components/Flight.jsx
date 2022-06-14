@@ -5,6 +5,7 @@ import FlightSegment from "./FlightSegment";
 const Flight = ({ flight }) => {
   const { carrier, price, legs } = flight.flight;
   const [firstLeg, secondLeg] = legs;
+
   return (
     <>
       <FlightHeader carrier={carrier} price={price} />
