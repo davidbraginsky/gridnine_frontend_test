@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const FlightTable = () => {
   const [data, setData] = useState(null);
+  const [visible, setVisible] = useState(3);
 
   const getData = async () => {
     const response = await fetch("http://localhost:3000/result");
@@ -14,13 +15,17 @@ const FlightTable = () => {
     getData();
   }, []);
 
+  const clickHandler = () => {
+    setVisible((prevValue) => prevValue + 3);
+  };
+
   if (data) {
     return (
       <div className="flights-box">
-        {data.flights.map((flight) => (
+        {data.flights.slice(0, visible).map((flight) => (
           <Flight key={flight.flightToken} flight={flight} />
         ))}
-        <button>Показать ещё</button>
+        <button onClick={clickHandler}>Показать ещё</button>
       </div>
     );
   }
