@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gridnine_frontend_test/static/css/main.7f44e75a.css",
+    "main.js": "/gridnine_frontend_test/static/js/main.e47c9f45.js",
+    "index.html": "/gridnine_frontend_test/index.html",
+    "main.7f44e75a.css.map": "/gridnine_frontend_test/static/css/main.7f44e75a.css.map",
+    "main.e47c9f45.js.map": "/gridnine_frontend_test/static/js/main.e47c9f45.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7f44e75a.css",
+    "static/js/main.e47c9f45.js"
+  ]
+}
