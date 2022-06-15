@@ -1,7 +1,7 @@
 const FlightSegment = ({ leg, carrier }) => {
   const { duration, segments } = leg;
 
-  const { caption: airlineTitle, airlineCode } = carrier;
+  const { caption: airlineTitle } = carrier;
 
   let firstFlight = undefined;
   let secondFlight = undefined;
@@ -12,7 +12,7 @@ const FlightSegment = ({ leg, carrier }) => {
     secondFlight = segments[1];
 
     const {
-      departureCity: { caption: departureCityTitle },
+      departureCity: defaultDepartureCity = { uid: "-", caption: "n/a" },
       departureAirport: { caption: departureAirportTitle, uid: departureAirportUID },
       departureDate,
     } = firstFlight;
@@ -46,7 +46,7 @@ const FlightSegment = ({ leg, carrier }) => {
           <div className="flight__info-section">
             <div className="flight__departure">
               <span className="flight__departure-airport">
-                {departureCityTitle}, {departureAirportTitle}
+                {defaultDepartureCity.caption}, {departureAirportTitle}
               </span>
               <span className="flight__departure-airportID">({departureAirportUID})</span>
             </div>
@@ -83,9 +83,7 @@ const FlightSegment = ({ leg, carrier }) => {
               <span className="flight__stops">1 пересадка</span>
               <div className="flight__segment-divider"></div>
             </div>
-            <div className="flight__company">
-              Рейс выполняет: {airlineCode} {airlineTitle}
-            </div>
+            <div className="flight__company">Рейс выполняет: {airlineTitle}</div>
           </div>
         </div>
       </div>
@@ -162,9 +160,7 @@ const FlightSegment = ({ leg, carrier }) => {
               <span className="flight__stops">без пересадок</span>
               <div className="flight__segment-divider"></div>
             </div>
-            <div className="flight__company">
-              Рейс выполняет: {airlineCode} {airlineTitle}
-            </div>
+            <div className="flight__company">Рейс выполняет: {airlineTitle}</div>
           </div>
         </div>
       </div>
