@@ -2,7 +2,7 @@ import { useContext } from "react";
 import FilterContext from "../context/FilterContext";
 
 const AirlinesBox = () => {
-  const { airlinesList, airlineParameters, setAirlineParameters } = useContext(FilterContext);
+  const { airlinesList, setAirlineParameters } = useContext(FilterContext);
 
   const changeHandler = (e) => {
     const { checked, id } = e.target;

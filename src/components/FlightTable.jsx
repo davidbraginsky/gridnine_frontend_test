@@ -8,13 +8,8 @@ const FlightTable = () => {
   const [dataCopy, setDataCopy] = useState(null);
   const { sortParameter, filterParameters, setAirlinesList, visible, setVisible } = useContext(FilterContext);
 
-  const getData = async () => {
-    const response = await fetch("http://localhost:3000/result");
-    const flightData = await response.json();
-    setData(flightData.flights);
-    setDataCopy(flightData.flights);
-
-    const carriersWithPrices = flightData.flights.map((item) => {
+  const getAirlinesList = (airlineData) => {
+    const carriersWithPrices = airlineData.map((item) => {
       return { airlineTitle: item.flight.carrier.caption, price: item.flight.price.total.amount };
     });
 
@@ -43,6 +38,14 @@ const FlightTable = () => {
     setAirlinesList(uniqueAirlinesArrayWithPrices);
   };
 
+  const getData = async () => {
+    const response = await fetch("http://localhost:3000/result");
+    const flightData = await response.json();
+    setData(flightData.flights);
+    setDataCopy(flightData.flights);
+    getAirlinesList(flightData.flights);
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -51,20 +54,16 @@ const FlightTable = () => {
     if (sortParameter) {
       const sortedData = [...data];
       if (sortParameter === "min-to-max") {
-        console.log("insinde min to max");
         sortedData.sort((a, b) => a.flight.price.total.amount - b.flight.price.total.amount);
         setData(sortedData);
       } else if (sortParameter === "max-to-min") {
-        console.log("insinde max to min");
         console.log(sortedData);
         sortedData.sort((a, b) => b.flight.price.total.amount - a.flight.price.total.amount);
         setData(sortedData);
       } else if (sortParameter === "flight-time") {
-        console.log("insinde flight time");
         sortedData.sort((a, b) => {
           const totalTimeA = a.flight.legs[0].duration + a.flight.legs[1].duration;
           const totalTimeB = b.flight.legs[0].duration + b.flight.legs[1].duration;
-
           return totalTimeA - totalTimeB;
         });
         setData(sortedData);
@@ -88,6 +87,7 @@ const FlightTable = () => {
       let airlineFilteredArray = [];
       let stopFilteredArray = [];
       let priceFilteredArray = [];
+      let newFilteredFlightArray = [];
 
       if (noStops || oneStop) {
         if (noStops && oneStop) {
@@ -148,7 +148,6 @@ const FlightTable = () => {
         }
       }
 
-      let newFilteredFlightArray = [];
       if (airlineParameters.length === 0) {
         newFilteredFlightArray = priceFilteredArray;
       } else {
