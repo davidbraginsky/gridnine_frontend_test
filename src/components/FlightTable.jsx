@@ -39,7 +39,7 @@ const FlightTable = () => {
   };
 
   const getData = async () => {
-    const response = await fetch("http://localhost:3000/result");
+    const response = await fetch("davidbraginsky.github.io/gridnine_frontend_test/src/data/flights.json");
     const flightData = await response.json();
     setData(flightData.flights);
     setDataCopy(flightData.flights);
