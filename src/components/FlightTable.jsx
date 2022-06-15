@@ -6,8 +6,7 @@ import Loader from "./Loader";
 const FlightTable = () => {
   const [data, setData] = useState(null);
   const [dataCopy, setDataCopy] = useState(null);
-  const [visible, setVisible] = useState(3);
-  const { sortParameter, filterParameters, minPrice, maxPrice, setAirlinesList, setMinPrice, setMaxPrice, setOneStop, setNoStops, setAirlineParameters } = useContext(FilterContext);
+  const { sortParameter, filterParameters, minPrice, maxPrice, setAirlinesList, setMinPrice, setMaxPrice, setOneStop, setNoStops, setAirlineParameters, visible, setVisible } = useContext(FilterContext);
 
   const getData = async () => {
     const response = await fetch("http://localhost:3000/result");
@@ -259,20 +258,20 @@ const FlightTable = () => {
   }, [filterParameters]);
 
   const clickHandler = () => {
+    console.log("visible: ", visible);
+    console.log("data length: ", data.length);
     setVisible((prevValue) => prevValue + 3);
   };
 
   if (data) {
     return (
       <div className="flights-box">
-        {data.slice(0, visible).map((flight) => (
-          <Flight key={flight.flightToken} flight={flight} />
-        ))}
-        <button onClick={clickHandler}>Показать ещё</button>
+        {data.length > 0 ? data.slice(0, visible).map((flight) => <Flight key={flight.flightToken} flight={flight} />) : "Полётов в соответсвтии с Вашим запросом не найдено. Попробуйте изменить параметры поиска."}
+        <div className="button-wrapper">{visible >= data.length ? <span>Выведены все результаты</span> : <button onClick={clickHandler}>Показать ещё</button>}</div>
       </div>
     );
   }
-  return <p>Loading...</p>;
+  return <Loader />;
 };
 
 export default FlightTable;
