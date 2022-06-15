@@ -34,7 +34,7 @@
 
 ### Ссылки
 
-<!-- [Live Website](https://davidbraginsky.github.io/idaproject_frontend_test/) -->
+[Live Website](https://davidbraginsky.github.io/gridnine_frontend_test/)
 
 ## Разработка
 
