@@ -39,11 +39,11 @@ const FlightTable = () => {
   };
 
   const getData = async () => {
-    const response = await fetch("davidbraginsky.github.io/gridnine_frontend_test/src/data/flights.json");
+    const response = await fetch("https://raw.githubusercontent.com/davidbraginsky/gridnine_frontend_test/master/src/data/flights.json");
     const flightData = await response.json();
-    setData(flightData.flights);
-    setDataCopy(flightData.flights);
-    getAirlinesList(flightData.flights);
+    setData(flightData.result.flights);
+    setDataCopy(flightData.result.flights);
+    getAirlinesList(flightData.result.flights);
   };
 
   useEffect(() => {
