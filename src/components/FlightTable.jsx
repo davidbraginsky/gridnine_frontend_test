@@ -6,16 +6,10 @@ import Loader from "./Loader";
 const FlightTable = () => {
   const [data, setData] = useState(null);
   const [dataCopy, setDataCopy] = useState(null);
-  const [visible, setVisible] = useState(3);
-  const { sortParameter, filterParameters, minPrice, maxPrice, setAirlinesList, setMinPrice, setMaxPrice, setOneStop, setNoStops, setAirlineParameters } = useContext(FilterContext);
+  const { sortParameter, filterParameters, setAirlinesList, visible, setVisible } = useContext(FilterContext);
 
-  const getData = async () => {
-    const response = await fetch("http://localhost:3000/result");
-    const flightData = await response.json();
-    setData(flightData.flights);
-    setDataCopy(flightData.flights);
-
-    const carriersWithPrices = flightData.flights.map((item) => {
+  const getAirlinesList = (airlineData) => {
+    const carriersWithPrices = airlineData.map((item) => {
       return { airlineTitle: item.flight.carrier.caption, price: item.flight.price.total.amount };
     });
 
@@ -44,6 +38,14 @@ const FlightTable = () => {
     setAirlinesList(uniqueAirlinesArrayWithPrices);
   };
 
+  const getData = async () => {
+    const response = await fetch("http://localhost:3000/result");
+    const flightData = await response.json();
+    setData(flightData.flights);
+    setDataCopy(flightData.flights);
+    getAirlinesList(flightData.flights);
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -52,20 +54,16 @@ const FlightTable = () => {
     if (sortParameter) {
       const sortedData = [...data];
       if (sortParameter === "min-to-max") {
-        console.log("insinde min to max");
         sortedData.sort((a, b) => a.flight.price.total.amount - b.flight.price.total.amount);
         setData(sortedData);
       } else if (sortParameter === "max-to-min") {
-        console.log("insinde max to min");
         console.log(sortedData);
         sortedData.sort((a, b) => b.flight.price.total.amount - a.flight.price.total.amount);
         setData(sortedData);
       } else if (sortParameter === "flight-time") {
-        console.log("insinde flight time");
         sortedData.sort((a, b) => {
           const totalTimeA = a.flight.legs[0].duration + a.flight.legs[1].duration;
           const totalTimeB = b.flight.legs[0].duration + b.flight.legs[1].duration;
-
           return totalTimeA - totalTimeB;
         });
         setData(sortedData);
@@ -89,46 +87,36 @@ const FlightTable = () => {
       let airlineFilteredArray = [];
       let stopFilteredArray = [];
       let priceFilteredArray = [];
+      let newFilteredFlightArray = [];
 
       if (noStops || oneStop) {
-        console.log("inside stop check, one of exists");
         if (noStops && oneStop) {
-          console.log("both exists");
           stopFilteredArray = copiedData;
         } else if (noStops) {
-          console.log("only nostops exists");
           stopFilteredArray = copiedData.filter((item) => item.flight.legs[1].segments.length === 1 && item.flight.legs[0].segments.length === 1);
         } else if (oneStop) {
-          console.log("only onestop exists");
           stopFilteredArray = copiedData.filter((item) => item.flight.legs[1].segments.length > 1 || item.flight.legs[0].segments.length > 1);
         }
       } else if (!noStops && !oneStop) {
-        console.log("outside stop check, none exist");
         stopFilteredArray = copiedData;
       }
 
       if (airlineParameters.length > 0) {
-        console.log("inside airline check, at least one exists");
         airlineParameters.forEach((airline) => {
           airlineFilteredArray = [...airlineFilteredArray, stopFilteredArray.filter((item) => item.flight.carrier.caption === airline)];
         });
       } else if (airlineParameters.length === 0) {
-        console.log("outside airline check, none exist");
         airlineFilteredArray = stopFilteredArray;
       }
 
       if (airlineParameters.length === 0) {
         if (minPrice > 0 && maxPrice > 0) {
-          console.log("no airlines, inside price check, both exist");
           priceFilteredArray = airlineFilteredArray.filter((item) => item.flight.price.total.amount > minPrice && item.flight.price.total.amount < maxPrice);
         } else if (minPrice === 0 && maxPrice === 0) {
-          console.log("no airlines, outside price check, none exist");
           priceFilteredArray = airlineFilteredArray;
         } else if (minPrice > 0) {
-          console.log("no airlines, inside min price");
           priceFilteredArray = airlineFilteredArray.filter((item) => item.flight.price.total.amount > minPrice);
         } else if (maxPrice > 0) {
-          console.log("no airlines, inside max price");
           priceFilteredArray = airlineFilteredArray.filter((item) => item.flight.price.total.amount < maxPrice);
         }
       } else {
@@ -160,7 +148,6 @@ const FlightTable = () => {
         }
       }
 
-      let newFilteredFlightArray = [];
       if (airlineParameters.length === 0) {
         newFilteredFlightArray = priceFilteredArray;
       } else {
@@ -170,92 +157,8 @@ const FlightTable = () => {
           });
         });
       }
-
-      console.log("copiedData:", copiedData);
-      console.log("stopfiltered:", stopFilteredArray);
-      console.log("airlinefiltered: ", airlineFilteredArray);
-      console.log("pricefiltered:", priceFilteredArray);
-      console.log("newFilteredFlightArray:", newFilteredFlightArray);
       setData(newFilteredFlightArray);
-
-      // sortData();
     }
-
-    // if (filterParameters) {
-    //   const { airlineParameters, price, stops } = filterParameters;
-    //   const { noStops, oneStop } = stops;
-    //   const { minPrice, maxPrice } = price;
-
-    //   const copiedData = [...dataCopy];
-    //   let airlineFilteredArray = [];
-    //   let stopFilteredArray = [];
-    //   let priceFilteredArray = [];
-    //   // console.log("copiedData:", copiedData);
-
-    //   if (noStops || oneStop) {
-    //     if (noStops && oneStop) {
-    //       stopFilteredArray = copiedData;
-    //     } else if (noStops) {
-    //       stopFilteredArray = copiedData.filter((item) => item.flight.legs[1].segments.length === 1 && item.flight.legs[0].segments.length === 1);
-    //     } else if (oneStop) {
-    //       stopFilteredArray = copiedData.filter((item) => item.flight.legs[1].segments.length > 1 || item.flight.legs[0].segments.length > 1);
-    //     }
-    //   } else if (!noStops && !oneStop) {
-    //     stopFilteredArray = copiedData;
-    //   }
-
-    //   if (airlineParameters.length > 0) {
-    //     airlineParameters.forEach((airline) => {
-    //       airlineFilteredArray = [...airlineFilteredArray, stopFilteredArray.filter((item) => item.flight.carrier.caption === airline)];
-    //     });
-    //   } else if (airlineParameters.length === 0) {
-    //     airlineFilteredArray = stopFilteredArray;
-    //   }
-
-    //   if (minPrice > 0 && maxPrice > 0) {
-    //     // console.log("inside min & max");
-    //     // console.log(Number(minPrice));
-    //     // console.log(Number(maxPrice));
-    //     airlineFilteredArray.forEach((arr) => {
-    //       priceFilteredArray = [
-    //         ...priceFilteredArray,
-    //         arr.filter((item) => {
-    //           if (item.flight.price.total.amount < Number(maxPrice) && item.flight.price.total.amount > Number(minPrice)) {
-    //             return true;
-    //           }
-    //         }),
-    //       ];
-    //     });
-    //   } else if (minPrice == 0 && maxPrice == 0) {
-    //     // console.log("inside no min and no max");
-    //     priceFilteredArray = airlineFilteredArray;
-    //   } else if (minPrice > 0) {
-    //     // console.log("inside min price");
-    //     // console.log(Number(minPrice));
-    //     airlineFilteredArray.forEach((arr) => {
-    //       priceFilteredArray = [...priceFilteredArray, arr.filter((item) => item.flight.price.total.amount > Number(minPrice))];
-    //     });
-    //   } else if (maxPrice > 0) {
-    //     // console.log("inside max price");
-    //     // console.log(Number(minPrice));
-    //     airlineFilteredArray.forEach((arr) => {
-    //       priceFilteredArray = [...priceFilteredArray, arr.filter((item) => item.flight.price.total.amount < Number(maxPrice))];
-    //     });
-    //   }
-
-    //   // console.log("stopfiltered:", stopFilteredArray);
-    //   // console.log("airlinefiltered: ", airlineFilteredArray);
-    //   // console.log("pricefiltered:", priceFilteredArray);
-    //   let newFilteredFlightArray = [];
-    //   priceFilteredArray.forEach((arr) => {
-    //     arr.forEach((item) => {
-    //       newFilteredFlightArray.push(item);
-    //     });
-    //   });
-    //   // console.log("newFilteredFlightArray:", newFilteredFlightArray);
-    //   setData(newFilteredFlightArray);
-    //   // sortData();
-    // }
   }, [filterParameters]);
 
   const clickHandler = () => {
@@ -265,14 +168,12 @@ const FlightTable = () => {
   if (data) {
     return (
       <div className="flights-box">
-        {data.slice(0, visible).map((flight) => (
-          <Flight key={flight.flightToken} flight={flight} />
-        ))}
-        <button onClick={clickHandler}>Показать ещё</button>
+        {data.length > 0 ? data.slice(0, visible).map((flight) => <Flight key={flight.flightToken} flight={flight} />) : "Полётов в соответсвтии с Вашим запросом не найдено. Попробуйте изменить параметры поиска."}
+        <div className="button-wrapper">{visible >= data.length ? <span>Выведены все результаты</span> : <button onClick={clickHandler}>Показать ещё</button>}</div>
       </div>
     );
   }
-  return <p>Loading...</p>;
+  return <Loader />;
 };
 
 export default FlightTable;

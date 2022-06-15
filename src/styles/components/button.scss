@@ -7,4 +7,9 @@
   color: white;
   padding: 11px 0px;
   font-size: 16px;
+  transition: all 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  &:hover {
+    background-color: adjust-color($orange, $lightness: -10%);
+    transition-duration: 0.1s;
+  }
 }

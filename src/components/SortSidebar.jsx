@@ -6,7 +6,7 @@ import { useContext } from "react";
 import FilterContext from "../context/FilterContext";
 
 const SortSidebar = () => {
-  const { setFilterParameters, minPrice, maxPrice, oneStop, noStops, airlineParameters } = useContext(FilterContext);
+  const { setFilterParameters, minPrice, maxPrice, oneStop, noStops, airlineParameters, setVisible } = useContext(FilterContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -36,6 +36,7 @@ const SortSidebar = () => {
     if (maxPrice > 1) {
       filterObj.price.maxPrice = maxPrice;
     }
+    setVisible(3);
     setFilterParameters(filterObj);
   };
   return (

@@ -1,17 +1,54 @@
-### bugs
+# Gridnine Frontend Test
 
-<!-- Nr. 1: Filtering by only 'no stops' causes error -->
+Тестовое задание на позицию JavaScript Developer для компании Gridnine
 
-<!-- Nr. 2: if filter includes max price, then sorting by min, then sorting by max causes error -->
+### Оглавление
 
-<!-- Nr. 3: clicking filter whne no filters are selected causes error (similiar to Nr.1) -->
+- [Обзор](#обзор)
+  - [Задание](#задание)
+  - [Скриншот](#скриншот)
+  - [Ссылки](#ссылки)
+- [Разработка](#разработка)
+  - [Инструменты](#инструменты)
+  - [Todo](#todo)
+- [Автор](#автор)
 
-<!-- Nr. 4: Filtering by only min and max returns empty array -->
+## Обзор
 
-### tasks
+### Задание
 
-- remove 'show more' button when all data is displayed
-- show 'no results' when filtered data is empty
-- show loader while data is fetched
-- add hover styles
-- animate filtration and sorting
+Пользователи могут:
+
+- Видеть список полётов
+- Соритровать список (по возрастанию цены, по убыванию, по времени в пути)
+- Фильтровать список (по количеству пересадок, по цене, по конкретным авиакомпаниям)
+
+Технические требования:
+
+- Приложение написано на React
+- логотип авиакомпаний загружается динамически при помощи API Aviasales
+
+### Скриншот
+
+![Screenshot of app](./src/assets/gridnine_screenshot.png)
+
+### Ссылки
+
+<!-- [Live Website](https://davidbraginsky.github.io/idaproject_frontend_test/) -->
+
+## Разработка
+
+### Инструменты
+
+- React (18.1)
+- SCSS
+- ESLint
+- Json-server
+
+Для того, чтобы запустить приложение локально склонируйте репозиторий. После установите все зависимости при помощи `npm install`. Запустите приложение при помощи `npm run serve`.
+
+### Todo
+
+## Автор
+
+[@davidbraginsky](https://github.com/davidbraginsky)
