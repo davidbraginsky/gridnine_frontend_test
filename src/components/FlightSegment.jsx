@@ -26,8 +26,26 @@ const FlightSegment = ({ leg, carrier }) => {
     const departureFlightTime = departureDate.substring(11, 16);
     const departureFlightDate = departureDate.substring(0, 10);
 
+    const newDepartureFlightDate = new Date(departureFlightDate);
+    const formatedDepartureFlightDate = newDepartureFlightDate.toLocaleDateString("ru", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+
+    const dateArr = formatedDepartureFlightDate.split(",");
+    let [weekday, fullDate] = dateArr;
+    weekday = weekday.substring(0, 2);
+    let month = fullDate.replace(/[^а-яА-Я]/g, "").substring(0, 3);
+    let dayOfMonth = departureFlightDate.substring(8, 10);
+
     const arrivalFlightTime = arrivalDate.substring(11, 16);
     const arrivalFlightDate = arrivalDate.substring(0, 10);
+
+    const newArrivalFlightDate = new Date(arrivalFlightDate);
+    const formatedArrivalFlightDate = newArrivalFlightDate.toLocaleDateString("ru", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+
+    const arrivalDateArr = formatedArrivalFlightDate.split(",");
+    let [arrivalWeekday, arrivalFullDate] = arrivalDateArr;
+    arrivalWeekday = arrivalWeekday.substring(0, 2);
+    let arrivalMonth = arrivalFullDate.replace(/[^а-яА-Я]/g, "").substring(0, 3);
+    let arrivalDayOfMonth = arrivalFlightDate.substring(8, 10);
 
     const timeConverter = (n) => {
       let num = n;
@@ -65,7 +83,10 @@ const FlightSegment = ({ leg, carrier }) => {
             <div className="flight__length">
               <div className="flight__length-block">
                 <div className="flight__departure-time">{departureFlightTime}</div>
-                <div className="flight__departure-date">{departureFlightDate}</div>
+                <div className="flight__departure-date">
+                  {`${dayOfMonth} ${month}. `}
+                  {weekday === "че" ? "чт" : weekday}
+                </div>
               </div>
               <div className="flight__length-block">
                 <div className="flight__total-flight-time">
@@ -74,7 +95,10 @@ const FlightSegment = ({ leg, carrier }) => {
                 </div>
               </div>
               <div className="flight__length-block">
-                <div className="flight__arrival-date">{arrivalFlightDate}</div>
+                <div className="flight__arrival-date">
+                  {`${arrivalDayOfMonth} ${arrivalMonth}. `}
+                  {arrivalWeekday === "че" ? "чт" : arrivalWeekday}
+                </div>
                 <div className="flight__arrival-time">{arrivalFlightTime}</div>
               </div>
             </div>
