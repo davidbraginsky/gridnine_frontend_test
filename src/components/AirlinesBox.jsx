@@ -1,15 +1,28 @@
+import { useContext } from "react";
+import FilterContext from "../context/FilterContext";
+
 const AirlinesBox = () => {
+  const { airlinesList, airlineParameters, setAirlineParameters } = useContext(FilterContext);
+
+  const changeHandler = (e) => {
+    const { checked, id } = e.target;
+    if (checked) {
+      setAirlineParameters((prevFilters) => [...prevFilters, id]);
+    } else {
+      setAirlineParameters((prevFilters) => prevFilters.filter((filter) => filter !== id));
+    }
+  };
   return (
     <div className="airlines-box">
       <p className="sort__header">Авиакомпании</p>
-      <div className="airline__option">
-        <input type="checkbox" id="LOT" />
-        <label htmlFor="LOT">- LOT Polish Airlines от 21049 р.</label>
-      </div>
-      <div className="airline__option">
-        <input type="checkbox" id="SU" />
-        <label htmlFor="SU">- Аэрофлот - рос... от 31733 р.</label>
-      </div>
+      {airlinesList.map((airline) => (
+        <div key={airline.airlineTitle} className="airline__option">
+          <input onChange={changeHandler} type="checkbox" id={airline.airlineTitle} />
+          <label htmlFor={airline.airlineTitle}>
+            - {airline.airlineTitle} от {airline.price} р.
+          </label>
+        </div>
+      ))}
     </div>
   );
 };
